@@ -6,6 +6,7 @@ import chat from "../../assets/chat.svg";
 import danger from "../../assets/danger.svg";
 import warning from "../../assets/warning.svg";
 import { Link } from "react-router-dom";
+import BottomBar from "../../components/BottomBar";
 
 export const UserHome = () => {
   const [alertMode, setAlertMode] = useState("safe"); // Initial state for alert mode
@@ -93,20 +94,7 @@ export const UserHome = () => {
         </button>
       </div>
 
-      <div className="fixed bottom-0 left-0 w-full h-16 border-t-2 bg-white flex justify-around items-center">
-        <a href="/" className="text-gray-500 hover:text-black">
-          <img className="h-10" src={notification} alt="notification" />
-        </a>
-        <Link to="/user/officialchat" className="text-gray-500 hover:text-black">
-          <img className="h-12" src={chat} alt="chat" />
-        </Link>
-        <Link to="/user/settings" className="text-gray-500 hover:text-black">
-          <img className="h-[55px]" src={settings} alt="settings" />
-        </Link>
-        <Link to="/" className="text-gray-500 hover:text-black">
-          <img onClick={handleLogout} className="h-10" src={logout} alt="logout" />
-        </Link>
-      </div>
+      <BottomBar handleLogout={handleLogout} />
     </div>
   );
 };
