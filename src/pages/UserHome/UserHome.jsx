@@ -5,6 +5,7 @@ import notification from "../../assets/notification.svg";
 import chat from "../../assets/chat.svg";
 import danger from "../../assets/danger.svg";
 import warning from "../../assets/warning.svg";
+import { Link } from "react-router-dom";
 
 export const UserHome = () => {
   const [alertMode, setAlertMode] = useState("safe"); // Initial state for alert mode
@@ -24,6 +25,11 @@ export const UserHome = () => {
     yellow: "text-yellow-500",
     red: "text-[#DB2626]",
   };
+
+  const handleLogout = () => {
+    // TODO: Implement logout logic
+    console.log("Logged out successfully");
+  }
 
   return (
     <div className="bg-white h-screen">
@@ -91,15 +97,15 @@ export const UserHome = () => {
         <a href="/" className="text-gray-500 hover:text-black">
           <img className="h-10" src={notification} alt="notification" />
         </a>
-        <a href="/" className="text-gray-500 hover:text-black">
+        <Link to="/user/officialchat" className="text-gray-500 hover:text-black">
           <img className="h-12" src={chat} alt="chat" />
-        </a>
-        <a href="/" className="text-gray-500 hover:text-black">
+        </Link>
+        <Link to="/user/settings" className="text-gray-500 hover:text-black">
           <img className="h-[55px]" src={settings} alt="settings" />
-        </a>
-        <a href="/" className="text-gray-500 hover:text-black">
-          <img className="h-10" src={logout} alt="logout" />
-        </a>
+        </Link>
+        <Link to="/" className="text-gray-500 hover:text-black">
+          <img onClick={handleLogout} className="h-10" src={logout} alt="logout" />
+        </Link>
       </div>
     </div>
   );

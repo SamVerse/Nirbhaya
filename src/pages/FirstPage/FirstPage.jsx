@@ -17,7 +17,7 @@ export const FirstPage = () => {
       </div>
 
       <div className="flex flex-col gap-5 pb-8">
-        <Link to="/user">
+        <Link to="/userSignup">
           <button className="bg-blue-500 text-white font-semibold py-3 px-6 rounded-full shadow-md w-48 hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105">
             Proceed as Citizen
           </button>
