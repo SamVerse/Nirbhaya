@@ -16,6 +16,8 @@ import OfficialMessages from "./pages/OfficialMessages";
 import OfficialAlerts from "./pages/officialAlerts";
 import OfficialSettings from "./pages/OfficialSettings";
 import OfficialLayout from "./pages/OfficialLayout";
+import OfficialUserChats from "./pages/OfficialUserChats";
+import RedAlertMode from "./pages/RedAlertMode";
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
         <Route path="/user/officialchat" element={<OfficialsChat />} />
         <Route path="/user/settings" element={<UserSettings />} />
         <Route path="/user/notifications" element={<UserNotifications />} />
+        <Route path="/user/redalert" element={<RedAlertMode />} />
 
          {/* New official routes */}
          <Route path="/official" element={<OfficialLayout />}>
@@ -35,6 +38,7 @@ function App() {
           <Route path="alerts" element={<OfficialAlerts />} />
           <Route path="messages" element={<OfficialMessages />} />
           <Route path="settings" element={<OfficialSettings />} />
+          <Route path="userChats" element={<OfficialUserChats/>} />
         </Route>
 
       </Routes>

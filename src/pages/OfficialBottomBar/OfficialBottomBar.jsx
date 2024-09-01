@@ -1,10 +1,9 @@
-import React from 'react';
+import { Home, Bell, MessageSquare, Settings, LogOut } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
-import { Home, MessageSquare, Bell, Settings, LogOut } from 'lucide-react';
 
 const OfficialBottomBar = () => {
   const navItems = [
-    { to: '/official', icon: Home, label: 'Dashboard' },
+    { to: '/official', icon: Home, label: 'Dashboard', exact: true },
     { to: '/official/alerts', icon: Bell, label: 'Alerts' },
     { to: '/official/messages', icon: MessageSquare, label: 'Messages' },
     { to: '/official/settings', icon: Settings, label: 'Settings' },
@@ -19,6 +18,7 @@ const OfficialBottomBar = () => {
           <NavLink
             key={item.to}
             to={item.to}
+            end={item.exact} // Ensure exact matching for the root route
             className={({ isActive }) =>
               `flex flex-col items-center ${
                 isActive ? 'text-blue-500' : 'text-gray-500'
