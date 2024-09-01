@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BottomBar from "../../components/BottomBar";
 import { Bell } from "lucide-react";
+import women from '../../assets/women.svg' 
 
 const notifications = [
   { id: 1, name: "Riya Mishra", time: "2020-09-19 at 5:33pm", type: "Profile" },
@@ -10,6 +11,7 @@ const notifications = [
 const DetailedView = ({ user, onClose }) => (
   <div className="h-screen flex  justify-center pb-10">
     <div className="bg-white p-4 rounded-lg pt-7">
+      <img src={women} className="object-cover w-[90px]" alt="logo" />
       <h2 className="text-xl font-bold mb-2">{user.name}</h2>
       <p>Time of latest update: {user.time.split(" at ")[1]}</p>
       <p>Gender: Female</p>
@@ -17,7 +19,7 @@ const DetailedView = ({ user, onClose }) => (
         <p className="text-gray-500">Map placeholder</p>
       </div>
       <p className="text-center text-red-600 font-semibold mt-8">
-        She is in RED ALERT. Please report to the location asap 
+        She is in RED ALERT. Please report to the location asap
       </p>
       <button
         onClick={onClose}
@@ -56,7 +58,7 @@ const userNotifications = () => {
                 >
                   <div className="flex flex-col pt-3 justify-center gap-3">
                     <div className="flex pt-3 items-center gap-3">
-                      <div className="w-[70px] h-[70px] bg-gray-300 rounded-full mr-3"></div>
+                      <img src={women} alt="logo" className="object-cover w-[70px] h-[70px] bg-gray-300 rounded-full mr-3"/>
                       <div>
                         <p className="font-semibold">{notif.name}</p>
                         <p className="text-sm text-gray-600">{notif.time}</p>

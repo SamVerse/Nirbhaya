@@ -17,6 +17,7 @@ import OfficialAlerts from "./pages/officialAlerts";
 import OfficialSettings from "./pages/OfficialSettings";
 import OfficialLayout from "./pages/OfficialLayout";
 import OfficialUserChats from "./pages/OfficialUserChats";
+import UserProfile from "./pages/userProfile";
 import RedAlertMode from "./pages/RedAlertMode";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/user/settings" element={<UserSettings />} />
         <Route path="/user/notifications" element={<UserNotifications />} />
         <Route path="/user/redalert" element={<RedAlertMode />} />
+        <Route path="/userprofile" element={<UserProfile />} />
 
          {/* New official routes */}
          <Route path="/official" element={<OfficialLayout />}>

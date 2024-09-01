@@ -49,9 +49,6 @@ const OfficialAlerts = () => {
                     <p className="text-xs text-gray-500">{alert.time} | {alert.date}</p>
                   </div>
                 </div>
-                <div className="w-12 h-12 gap-5  rounded-full border-2 border-gray-200 flex items-center justify-center bg-gray-100">
-                  <img src={alert.image} alt="Emergency" className="w-full h-full object-cover rounded-full" />
-                </div>
                 <button className="bg-red-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-red-700 transition duration-300" aria-label="Respond">
                   Respond
                 </button>
@@ -76,9 +73,7 @@ const OfficialAlerts = () => {
                   <p className="text-xs text-gray-500">2:00 PM | 2024-08-31</p>
                 </div>
               </div>
-              <div className="w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center bg-gray-100">
-                <img src="image_placeholder.png" alt="History" className="w-full h-full object-cover rounded-full" />
-              </div>
+              
             </div>
             {/* More history items... */}
           </div>
@@ -100,9 +95,7 @@ const OfficialAlerts = () => {
                   <p className="text-xs text-gray-500">3:15 PM | 2024-08-30</p>
                 </div>
               </div>
-              <div className="w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center bg-gray-100">
-                <img src="image_placeholder.png" alt="Status" className="w-full h-full object-cover rounded-full" />
-              </div>
+              
             </div>
             {/* More status items... */}
           </div>

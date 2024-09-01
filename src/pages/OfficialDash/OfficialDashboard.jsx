@@ -1,21 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { MapPin, MessageSquare, LogOut } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Link ,useNavigate  } from "react-router-dom";
+import { MapPin, MessageSquare, LogOut } from "lucide-react";
+import women from "../../assets/women.svg";
 
 const alerts = [
-  { id: 1, name: 'Riya mishra', date: '2023-10-01', time: '14:32:00', type: 'red', location: { lat: 40.7128, lng: -74.0060 } },
-  { id: 2, name: 'Priya', date: '2023-10-01', time: '13:15:00', type: 'red', location: { lat: 40.7282, lng: -73.7949 } },
-  { id: 3, name: 'Tripti', date: '2023-10-01', time: '12:45:00', type: 'red', location: { lat: 40.7589, lng: -73.9851 } },
+  {
+    id: 1,
+    name: "Riya mishra",
+    date: "2023-10-01",
+    time: "14:32:00",
+    type: "red",
+    location: { lat: 40.7128, lng: -74.006 },
+  },
+  {
+    id: 2,
+    name: "Priya",
+    date: "2023-10-01",
+    time: "13:15:00",
+    type: "red",
+    location: { lat: 40.7282, lng: -73.7949 },
+  },
+  {
+    id: 3,
+    name: "Tripti",
+    date: "2023-10-01",
+    time: "12:45:00",
+    type: "red",
+    location: { lat: 40.7589, lng: -73.9851 },
+  },
+  {
+    id: 4,
+    name: "Aisha",
+    date: "2023-10-01",
+    time: "12:45:00",
+    type: "yellow",
+    location: { lat: 40.7589, lng: -73.9851 },
+  },
+  {
+    id: 5,
+    name: "Sakshi",
+    date: "2023-10-01",
+    time: "12:45:00",
+    type: "yellow",
+    location: { lat: 40.7589, lng: -73.9851 },
+  },
   // Add more alerts as needed, including yellow alerts
 ];
 
-const AlertBox = ({ alert, onClick }) => (
-  <button 
-    onClick={() => onClick(alert)} 
-    className="w-full bg-red-100 p-4 rounded-lg mb-4 text-left"
+const AlertBox = ({ alert, onClick, activeTab }) => (
+  <button
+    onClick={() => onClick(alert)}
+    className={`w-full p-4 rounded-lg mb-4 text-left ${
+      activeTab === "yellow" ? "bg-yellow-100" : "bg-red-200"
+    }`}
   >
-    <div className="font-bold">{alert.name}</div>
-    <div className="text-sm text-gray-600">{`${alert.date} ${alert.time}`}</div>
+    <div className="flex gap-2 items-center justify-start">
+      <img
+        src={women}
+        className="w-[40px] object-cover rounded-e-full"
+        alt="logo"
+      />
+      <div className="font-bold">{alert.name}</div>
+    </div>
+    <div className="pt-3 text-sm text-gray-600">{`${alert.date} ${alert.time}`}</div>
     <div className="mt-2">
       <MapPin className="inline mr-2" size={16} />
       <span className="text-sm">Map placeholder</span>
@@ -26,14 +73,15 @@ const AlertBox = ({ alert, onClick }) => (
 const DetailedView = ({ alert, onClose }) => (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
     <div className="bg-white rounded-lg p-6 w-full max-w-md">
-      <h2 className="text-xl font-bold mb-4">{alert.name}</h2>
+    <img src={women} className="object-cover w-[90px]" alt="logo" />
+    <h2 className="text-xl font-bold mb-4">{alert.name}</h2>
       <p>Phone: +1234567890</p>
       <p>Gender: Female</p>
       <div className="mt-4 h-64 bg-gray-200 flex items-center justify-center">
         {/* This would be replaced with an actual map component */}
         <span>Detailed map view placeholder</span>
       </div>
-      <button 
+      <button
         onClick={onClose}
         className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
       >
@@ -53,7 +101,7 @@ const BottomBar = () => (
       <MessageSquare />
       <span className="text-xs">Messages</span>
     </Link>
-    <Link to="/logout" className="flex flex-col items-center">
+    <Link to="/" className="flex flex-col items-center">
       <LogOut />
       <span className="text-xs">Logout</span>
     </Link>
@@ -61,40 +109,61 @@ const BottomBar = () => (
 );
 
 const PoliceDashboard = () => {
-  const [activeTab, setActiveTab] = useState('red');
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("red");
   const [selectedAlert, setSelectedAlert] = useState(null);
 
-  const filteredAlerts = alerts.filter(alert => alert.type === activeTab);
+  const handleLogout = () => {
+    // Implement logout logic here (e.g., clear user session, tokens, etc.)
+    console.log("Logged out successfully");
+    // Navigate to the home page
+    navigate('/');
+  };
+
+  const filteredAlerts = alerts.filter((alert) => alert.type === activeTab);
 
   return (
     <div className="max-w-md mx-auto bg-white rounded-lg overflow-hidden">
       <div className="p-4">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center justify-center w-full">
-            <span className="font-bold mt-4 ml-6 text-red-500 text-[25px]">Nirbhaya</span>
+            <span className="font-bold mt-4 ml-6 text-red-500 text-[25px]">
+              Nirbhaya
+            </span>
           </div>
         </div>
-        
+
         <h1 className="text-2xl font-bold mb-4 mt-[55px]">Police Dashboard</h1>
-        
+
         <div className="flex mb-4">
           <button
-            onClick={() => setActiveTab('red')}
-            className={`flex-1 py-2 px-4 rounded-l-lg ${activeTab === 'red' ? 'bg-red-500 text-white' : 'bg-gray-200'}`}
+            onClick={() => setActiveTab("red")}
+            className={`flex-1 py-2 px-4 rounded-l-lg ${
+              activeTab === "red" ? "bg-red-500 text-white" : "bg-gray-200"
+            }`}
           >
             Red alerts
           </button>
           <button
-            onClick={() => setActiveTab('yellow')}
-            className={`flex-1 py-2 px-4 rounded-r-lg ${activeTab === 'yellow' ? 'bg-yellow-500 text-white' : 'bg-gray-200'}`}
+            onClick={() => setActiveTab("yellow")}
+            className={`flex-1 py-2 px-4 rounded-r-lg ${
+              activeTab === "yellow"
+                ? "bg-yellow-500 text-white"
+                : "bg-gray-200"
+            }`}
           >
             Yellow Alerts
           </button>
         </div>
-        
+
         <div>
-          {filteredAlerts.map(alert => (
-            <AlertBox key={alert.id} alert={alert} onClick={setSelectedAlert} />
+          {filteredAlerts.map((alert) => (
+            <AlertBox
+              key={alert.id}
+              alert={alert}
+              onClick={setSelectedAlert}
+              activeTab={activeTab} // Pass the activeTab prop here
+            />
           ))}
         </div>
       </div>
@@ -102,7 +171,10 @@ const PoliceDashboard = () => {
       <BottomBar />
 
       {selectedAlert && (
-        <DetailedView alert={selectedAlert} onClose={() => setSelectedAlert(null)} />
+        <DetailedView
+          alert={selectedAlert}
+          onClose={() => setSelectedAlert(null)}
+        />
       )}
     </div>
   );

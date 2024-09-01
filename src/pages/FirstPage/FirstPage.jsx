@@ -22,7 +22,7 @@ export const FirstPage = () => {
             Proceed as Citizen
           </button>
         </Link>
-        <Link>
+        <Link to='/official'>
           <button className="bg-green-500 text-white font-semibold py-3 px-6 rounded-full shadow-md w-48 hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105">
             Proceed as Official
           </button>
